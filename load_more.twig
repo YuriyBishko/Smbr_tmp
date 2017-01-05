@@ -1,0 +1,20 @@
+    {% for post in post_more|slice %}  
+          {% if post.thumbnail %}
+            <article id="post-{{post.ID}}" class="story__card photo" style="background-image: url('{{TimberImage(post.thumbnail).src|tojpg|resize(0,290)}}')">
+              <a class="story__link" href="{{post.link}}" rel="bookmark" title="{{post.title}}"></a>
+              <h2 class="story__title">
+                {{post.title}}
+              </h2>
+          {% else %}
+              <article id="post-{{post.ID}}" class="story__card">
+                <a class="story__link" href="{{post.link}}" rel="bookmark" title="{{post.title}}"></a>
+                <h2 class="story__title">
+                  {{post.title}}
+                </h2>
+                <div class="story__text">
+                  {{post.excerpt}}
+                </div>
+          {% endif %}
+          {% include['primary_card_base.twig']%}
+          </article>
+    {% endfor %}
